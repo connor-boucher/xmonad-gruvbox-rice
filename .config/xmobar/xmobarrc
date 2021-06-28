@@ -1,0 +1,18 @@
+Config { font		 = "xft:Ubuntu Nerd Font:weight=bold:pixelsize=13:antialias=true:hinting=true"
+       , additionalFonts = ["xft:Font Awesome:weight=bold:pixelsize=13:antialias=true:hinting=true"]
+       , bgColor	 = "#282828"
+       , fgColor	 = "#ebdbb2"
+       , iconRoot 	 = "/home/connor/.config/xmobar/"
+       , commands 	 = [
+			     Run Date " <fn=1>\xf017</fn>  %b %d %Y - (%H:%M) " "date" 50
+			   , Run Cpu ["-t", " <fn=1>\xf108</fn>  CPU: (<total>%)","-H","50","--high","red"] 20
+			   , Run Memory ["-t", " <fn=1>\xf233</fn>  MEM: <used>M (<usedratio>%)"] 20
+			   , Run DiskU [("/", " <fn=1>\xf0c7</fn>  HDD: <free> free")] [] 60
+		    	   , Run Com "echo" ["\xf1b2"] "package" 0
+		    	   , Run Com "getupdates" [] "updates" 36000
+			   , Run UnsafeStdinReader
+			   ]
+       , sepChar 	 = "%"
+       , alignSep 	 = "}{"
+       , template 	 = " <icon=haskell_20.xpm/>  <fc=#7c6f64>|</fc>  %UnsafeStdinReader%  }{ <action=`$TERMINAL -e htop`><fc=#b8bb26>%cpu%</fc> <fc=#7c6f64>|</fc> <fc=#fb4934>%memory%</fc> <fc=#7c6f64>|</fc> <fc=#fabd2f>%disku%</fc></action> <fc=#7c6f64>|</fc> <action=`$TERMINAL -e sudo pacman -Syu`><fc=#83a598><fn=1>%package%</fn>  %updates%</fc></action> <fc=#7c6f64>|</fc> <fc=#8ec07c>%date%</fc> "
+       }
